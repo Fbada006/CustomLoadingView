@@ -26,12 +26,19 @@ class LoadingView : View {
     }
 
     private fun init(context: Context, attributeSet: AttributeSet?) {
+        val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.LoadingView)
+        val loadingColor = typedArray.getColor(
+            R.styleable.LoadingView_loadingViewStrokeColor,
+            ContextCompat.getColor(context, R.color.teal_700)
+        )
+
         paint = Paint().apply {
-            color = ContextCompat.getColor(context, R.color.teal_700)
+            color = loadingColor
             style = Paint.Style.STROKE
             strokeWidth = 20F
-            isAntiAlias = true
         }
+
+        typedArray.recycle()
     }
 
     override fun onDraw(canvas: Canvas) {
