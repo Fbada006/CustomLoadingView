@@ -14,10 +14,11 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             if (button.text == "Load") {
                 loadingView.showLoading()
+                button.text = "Stop load"
             } else {
                 loadingView.hideLoading()
+                button.text = "Load"
             }
-            button.text = "Stop load"
         }
     }
 }
